@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{{ title }}{% endblock %}</title>
+  {% block head %}{% endblock %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<link href="/static/style/style.css" rel="stylesheet" media="screen">-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+
+<body>
+  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <h2><b>Neo OS</b></h2>
+      </a>
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+        data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a></div>
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item {% if page_name == "Index" %} is-active {% endif %}" href="/">Home</a>
+        <a class="navbar-item {% if page_name == "Packages" %} is-active {% endif %}" href="/packages">Packages</a>
+        <a class="navbar-item" href="https://forum.neo-os.com">Forum</a>
+        <a class="navbar-item" href="https://wiki.neo-os.com">Wiki</a>
+        <a class="navbar-item {% if page_name == "Our" %} is-active {% endif %}" href="/our">OUR</a>
+        <a class="navbar-item {% if page_name == "Downloads" %} is-active {% endif %}" href="/downloads">Downloads</a>
+      </div>
+    </div>
+  </nav>
+  {% block content %}{% endblock %}
+
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Neo OS</strong> by <a href="https://jgthms.com">David Karrick</a>. The source code is licensed <a
+          href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a
+          href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer>
+</body>
+<script src="../static/js/main.js"></script>
+
+</html >

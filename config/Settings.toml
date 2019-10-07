@@ -1,0 +1,11 @@
+[cert]
+cert = "certs/cert.pem"
+key = "certs/key.pem"
+
+[database]
+path = "~/omni/database/sled.db"
+
+[server]
+debug = true
+host = "127.0.0.1"
+port = 3223

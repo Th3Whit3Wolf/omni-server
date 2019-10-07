@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+    img {
+        border-radius: 50%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="hero is-info">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Security, Perfomance, and Simple
+            </h1>
+            <h2 class="subtitle">
+                Neo OS is a Linux distro with an emphasis on security, performance, and ease of use.
+                <br>
+                As much as possible Neo OS uses components built in memory safe programming languages(Go& Rust)
+                <br>
+                to improve safety while guaranteeing performance.
+            </h2>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <h1 class="title">
+            What's Special About Neo OS?
+        </h1>
+        <h2 class="subtitle has-text-centered">
+            <img src="https://mesalink.io/images/logo.svg" width="112" height="28">
+            <strong>
+                MesaLink
+            </strong>
+        </h2>
+        <div class="columns">
+            <div class="column">
+                <span class="icon is-large">
+                    <i class="fa fa-code fa-3x"></i>
+                </span>
+                <h3>
+                    <strong>
+                        Memory Safety
+                    </strong>
+                </h3>
+                <p>
+                    MesaLink is impervious to bugs like Heartbleed and buffer overflows becuse it is written in the
+                    memory-safe language of Rust.
+                </p>
+            </div>
+            <div class="column">
+                <span class="icon is-large is-centered">
+                    <i class="fa fa-key fa-3x"></i>
+                </span>
+                <h3>
+                    <strong>
+                        Modern Ciphersuites
+                    </strong>
+                </h3>
+                <p>
+                    MesaLink uses the best ciphersuites including AES-GCM, Chacha20Poly1305, and elliptic-curve key
+                    exchange with perfect forward secrecy.
+                </p>
+            </div>
+            <div class="column">
+                <span class="icon is-large">
+                    <i class="fa fa-lock fa-3x"></i>
+                </span>
+                <h3>
+                    <strong>
+                        TLS 1.3
+                    </strong>
+                </h3>
+                <p>
+                    Eight years since TLS 1.2, the faster and more secure TLS standard, is now in Rustls and
+                    MesaLink.
+                </p>
+            </div>
+            <div class="column">
+                <span class="icon is-large">
+                    <i class="fa fa-bolt fa-3x"></i>
+                </span>
+                <h3>
+                    <strong>Blazing Fast</strong>
+                </h3>
+                <p>
+                    X25519 key exchange,AES-NI support, no language runtime like Java/Go. MesaLink runs at full
+                    speed on your metal.
+                </p>
+            </div>
+        </div>
+        <h2 class="subtitle has-text-centered">
+            <img src="https://gitlab.redox-os.org/uploads/-/system/project/avatar/3/ion.png" width="112" height="28">
+            <strong>
+                Ion Shell
+            </strong>
+        </h2>
+        <div class="columns">
+            <div class="column">
+                <span class="icon is-large">
+                    <i class="fa fa-code fa-3x"></i>
+                </span>
+                <h3>
+                    <strong>
+                        Memory Safety
+                    </strong>
+                </h3>
+                <p>The Ion Shell, written in Rust eliminates the possibilities of a <a
+                        href="http://www.wikiwand.com/en/Shellshock_(software_bug)">ShellShock</a>-like
+                    vulnerability.
+                </p>
+            </div>
+            <div class="column">
+                <span class="icon is-large">
+                    <i class="fa fa-terminal fa-3x"></i>
+                </span>
+                <h3>
+                    <strong>
+                        Modern shell
+                    </strong>
+                </h3>
+                <p>
+                    Ion is a modern system shell that features a simple, yet powerful, syntax.
+                </p>
+            </div>
+            <div class="column">
+                <span class="icon is-large">
+                    <i class="fa fa-bolt fa-3x"></i>
+                </span>
+                <h3>
+                    <strong>
+                        Speed
+                    </strong>
+                </h3>
+                <p>
+                    Performance that exceeds that of Dash(which itself is much faster than Bash), when taking
+                    advantage of Ion's features.
+                </p>
+            </div>
+        </div>
+        <h2 class="subtitle has-text-centered">
+            <span class="icon is-large">
+                <i class="fa fa-cube fa-3x"></i>
+            </span>
+            <strong>
+                Omni Package Manager
+            </strong>
+        </h2>
+        <div class="columns">
+            <div class="column">
+                <span class="icon is-large">
+                    <i class="fa fa-code fa-3x"></i>
+                </span>
+                <h3>
+                    <strong>
+                        Rust Powered
+                    </strong>
+                </h3>
+                <p>
+                    Developing a package manager in rust greatly increases the overall quality and security of the
+                    package manager while making deveolpment easier due to it's excellent build system.
+                </p>
+            </div>
+            <div class="column">
+                <span class="icon is-large">
+                    <i class="fa fa-bolt fa-3x"></i>
+                </span>
+                <h3>
+                    <strong>
+                        Performance
+                    </strong>
+                </h3>
+                <p>
+                    Omni uses zstd compression while also downloading, unpacking, and installing packages in
+                    parallel and asynchronously. This means less time waiting on installs and updates and more time
+                    getting stuff done.
+                </p>
+            </div>
+            <div class="column">
+                <span class="icon is-large">
+                    <i class="fa fa-gitea fa-3x"></i>
+                </span>
+                <h3>
+                    <strong>
+                        OUR
+                    </strong>
+                </h3>
+                <p>
+                    The Omni User Repository allows users to easily install a large variety of different packages
+                    that would not otherwise be available for via a traditional package manager(i.e. software that
+                    not avialable for distribution).
+                </p>
+            </div>
+            <div class="column">
+                <span class="icon is-large">
+                    <i class="fa fa-bars fa-3x"></i>
+                </span>
+                <h3>
+                    <strong>
+                        More Options
+                    </strong>
+                </h3>
+                <p>
+                    While Omni ships binaries by default you can also build packages with custom tweaks for your
+                    system.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

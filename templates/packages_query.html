@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+    .box {
+        padding: 8.5px;
+        margin: 19.5px 47.5px 0px;
+        background-color: #F5F5F5;
+    }
+    
+    .pagination {
+        margin: 3.5px 0px 11px;
+    }
+	
+	.content {
+		margin:4.25px 0px 13px;
+	}
+    </style>
+{% endblock %}
+
+{% block content %}
+<section class="hero is-info">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">Packages</h1>
+            <h2 class="subtitle">
+                Welcome to the home of <span id="packages">Dynamically generated Package count</span> Neo OS
+                Packages
+                {% match kernel %}
+                {% when "linux" %}
+                Found linux
+                {% when "bsd" %}
+                Found bsd
+                {% when "redox" %}
+                Found redox
+                {% else %}
+                {% endmatch %}
+            </h2>
+        </div>
+    </div>
+</section>
+<div class="box">
+    <section class="section">
+        <h1 class="title">Package Search</h1>
+        <div class="is-divider"></div>
+        <div class="columns">
+            <div class="column is-2 is-1-desktop">
+                <div class="control">
+                    <div class="select is-rounded">
+                        <select id="kernel">
+                            <option>any</option>
+                            <option value="linux">Linux</option>
+                            <option value="bsd">BSD</option>
+                            <option value="redox">Redox</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-2 is-1-desktop">
+                <div class="control">
+                    <div class="select is-rounded">
+                        <select id="arch">
+                            <option>any</option>
+                            <option value="x86_64">x86_64</option>
+                            <option value="arm">ARM</option>
+                            <option value="power9">Power9</option>
+                            <option value="riscv">RISC-V</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-2 is-1-desktop">
+                <div class="control">
+                    <div class="select is-rounded">
+                        <select id="release">
+                            <option>any</option>
+                            <option value="rolling">Rolling</option>
+                            <option value="stable">Stable</option>
+                            <option value="lts">Long Term Stable</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-2 is-1-desktop">
+                <div class="control">
+                    <div class="select is-rounded">
+                        <select id="repo">
+                            <option>any</option>
+                            <option value="libre">Libre</option>
+                            <option value="libre_testing">Libre-Testing</option>
+                            <option value="main">Main</option>
+                            <option value="main_testing">Main-Testing</option>
+                            <option value="contrib">Contrib</option>
+                            <option value="contrib_testing">Contrib-Testing</option>
+                            <option value="noss">NOSS</option>
+                            <option value="noss_testing">NOSS-Testing</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="control">
+                    <input class="input is-info is-rounded search-input" onkeyup="searchBar()" type="search"
+                        placeholder="Search Database" id="Search" data-table="customers-list" />
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="box">
+    {% include "pagination.html" %}
+    <!-- Table -->
+    <div class="table-container">
+        <table class="table is-fullwidth is-hoverable table is-striped is-narrow" id="PackageList">
+            <thead>
+                <tr>
+                    <th>Kernel</th>
+                    <th>Arch</th>
+                    <th>Release</th>
+                    <th>Repository</th>
+                    <th>Name</th>
+                    <th>Version</th>
+                    <th>Description</th>
+                    <th>Size</th>
+                    <th>Last Update</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Kernel</th>
+                    <th>Arch</th>
+                    <th>Repository</th>
+                    <th>Release</th>
+                    <th>Name</th>
+                    <th>Version</th>
+                    <th>Description</th>
+                    <th>Size</th>
+                    <th>Last Update</th>
+                </tr>
+            </tfoot>
+            <tbody>{% for package in packages %}
+                <tr>
+                    <td>{{ package.kernel }}</td>
+                    <td>{{ package.arch }}</td>
+                    <td>{{ package.release }}</td>
+                    <td>{{ package.repo }}</td>
+                    <td>{{ package.name }}</td>
+                    <td>{{ package.version }}</td>
+                    <td>{{ package.description }}</td>
+                    <td>{{ package.pkg_size }}</td>
+                    <td>{{ package.last_update }}</td>
+                </tr>{% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% include "pagination.html" %}
+</div>
+<div class="tile box">
+    <div class="content">
+        <p>Can't find what you are looking for? Try searching again using different criteria, or try searching the
+            OUR to see if the package can be found there.</p>
+        <p>You are browsing the Neo OS package database. From here you can find detailed information about packages
+            located in the official supported repositories.</p>
+    </div>
+</div>
+{% endblock %}
