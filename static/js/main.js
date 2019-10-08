@@ -20,13 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 );
 
-/*
-document.getElementById("searchBtn").onclick = function() {
-    var link = document.getElementById("searchBtn");
-    link.setAttribute("href", "the new url");
-};
-*/
-
 // dropdown menu
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -36,9 +29,18 @@ document.addEventListener('DOMContentLoaded', function () {
         $selects.forEach(function ($el) {
             $el.addEventListener('click', function (event) {
                 event.stopPropagation();
-                //$el.classList.toggle('is-active');
-                const selection = ['kernel', 'arch', 'release', 'repo'];
-                selection.forEach(showSelected);
+                $el.classList.toggle('is-active');
+                //const selection = ['kernel', 'arch', 'release', 'repo'];
+                var kernel = showSelected('kernel');
+                var arch = showSelected('arch');
+                var repo = showSelected('repo');
+                var release = showSelected('release');
+                var q = getQuery();
+                console.log(q);
+                var link = kernel + arch + release + repo + q;
+                var link = link.slice(0, -1);
+                document.getElementById("searchBtn").setAttribute("href", "/packages?" + link);
+                console.log(link);
             });
         });
     }
@@ -48,35 +50,25 @@ document.addEventListener('DOMContentLoaded', function () {
         return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
     }
 
-    function showSelected(category) {
-        var selector = document.getElementById(category);
-        var val = selector[selector.selectedIndex].value;
-        console.log(val);
+    function showSelected(item) {
+        var selector = document.getElementById(item);
+        var value = selector[selector.selectedIndex].value;
+        //console.log(value);
+        if (value === "any") {
+            return '';
+        } else {
+            return item + "=" + value + "&";
+        }
     }
 });
 
-// Search for packages
-function searchBar() {
-    // Declare variables
-    var input, filter, table, td, i, txtValue;
-    input = document.getElementById("Search");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("PackageList");
-    tr = table.getElementsByTagName("tr");
-
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[4];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
+// Get Query
+function getQuery() {
+    var x = document.getElementById("Search").value;
+    if (x === null || x.trim() === '') {
+        return '';
+    } else {
+        return "q=" + x + "&";
     }
 }
 
-var rows = document.getElementById('PackageList').getElementsByTagName("tbody")[0].getElementsByTagName("tr").length;
-document.getElementById('packages').innerHTML = '4';
